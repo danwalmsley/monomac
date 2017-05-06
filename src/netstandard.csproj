@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="netstandard.files" />
+  <PropertyGroup>
+    <PackageId>MonoMac.NetStandard</PackageId>
+    <Authors>kekekeks</Authors>
+    <Copyright>https://github.com/mono/monomac/blob/master/AUTHORS</Copyright>
+    <PackageProjectUrl>https://github.com/AvaloniaUI/monomac</PackageProjectUrl>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <AssemblyName>MonoMac</AssemblyName>
+    <DebugType>portable</DebugType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+    <DefineConstants>MONOMAC;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.IO.UnmanagedMemoryStream" Version="4.3.0"/>
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0"/>
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0"/>
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0"/>
+  </ItemGroup>
+</Project>
+

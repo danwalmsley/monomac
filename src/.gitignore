@@ -1,5 +1,8 @@
 *~
+netstandard.files
 generated_sources
+bin
+obj
 *.dll
 *.exe
 *.mdb

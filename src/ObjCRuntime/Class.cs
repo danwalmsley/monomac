@@ -215,7 +215,7 @@ namespace MonoMac.ObjCRuntime {
 					class_addMethod (handle, builder.Selector, builder.Delegate, builder.Signature);
 					method_wrappers.Add (builder.Delegate);
 #if DEBUG
-					Console.WriteLine ("[CTOR] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", "init", (int) builder.Selector, builder.Signature, type, default_ctor);
+					Console.WriteLine ("[CTOR] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", "init", builder.Selector, builder.Signature, type, default_ctor);
 #endif
 				}
 
@@ -228,7 +228,7 @@ namespace MonoMac.ObjCRuntime {
 					class_addMethod (handle, builder.Selector, builder.Delegate, builder.Signature);
 					method_wrappers.Add (builder.Delegate);
 #if DEBUG
-					Console.WriteLine ("[CTOR] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector, (int) builder.Selector, builder.Signature, type, cinfo);
+					Console.WriteLine ("[CTOR] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector,  builder.Selector, builder.Signature, type, cinfo);
 #endif
 				}
 
@@ -453,7 +453,7 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 			lock (lock_obj)
 				method_wrappers.Add (builder.Delegate);
 #if DEBUG
-			Console.WriteLine ("[METHOD] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector, (int) builder.Selector, builder.Signature, type, minfo);
+			Console.WriteLine ("[METHOD] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector,  builder.Selector, builder.Signature, type, minfo);
 #endif
 		}
 

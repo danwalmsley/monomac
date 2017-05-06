@@ -255,3 +255,7 @@ push-to-monodevelop: MonoMac.dll
 #
 upgrade-monodevelop: MonoMac.dll
 	cp $(UPDATE_FILES) /Applications/MonoDevelop.app/Contents/MacOS//lib/monodevelop/AddIns/MonoDevelop.MonoMac/
+
+netstandard:
+	(echo '<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><ItemGroup>'; ls $(SOURCES) `cat generated_sources` $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)|tr ' ' "\n"|while read line; do echo $$line|sed 's/^/<Compile Include="/'|sed 's/$$/"\/>/'; done; echo '</ItemGroup></Project>') > netstandard.files
+

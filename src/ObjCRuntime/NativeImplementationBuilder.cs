@@ -45,8 +45,8 @@ namespace MonoMac.ObjCRuntime {
 		private Delegate del;
 				
 		static NativeImplementationBuilder () {
-			builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run, null, null, null,  null, null, true);
-			module = builder.DefineDynamicModule ("Implementations", false);
+			builder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName(Guid.NewGuid().ToString()), AssemblyBuilderAccess.Run);
+			module = builder.DefineDynamicModule ("Implementations");
 		}
 
 		internal abstract Delegate CreateDelegate ();
@@ -86,7 +86,11 @@ namespace MonoMac.ObjCRuntime {
 
 		protected Type CreateDelegateType (Type return_type, Type [] argument_types) {
 			TypeBuilder type = module.DefineType (Guid.NewGuid ().ToString (), TypeAttributes.Class | TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.AnsiClass | TypeAttributes.AutoClass, typeof (MulticastDelegate));
-			type.SetCustomAttribute (new CustomAttributeBuilder (typeof (MarshalAsAttribute).GetConstructor (new Type [] { typeof (UnmanagedType) }), new object [] { UnmanagedType.FunctionPtr }));
+
+//			var actor = typeof (MarshalAsAttribute).GetConstructor (new Type [] { typeof (UnmanagedType) });
+//			Console.WriteLine(actor);
+
+//			type.SetCustomAttribute (new CustomAttributeBuilder (typeof (MarshalAsAttribute).GetConstructor (new Type [] { typeof (UnmanagedType) }), new object [] { UnmanagedType.FunctionPtr }));
 
 			ConstructorBuilder constructor = type.DefineConstructor (MethodAttributes.Public, CallingConventions.Standard, new Type [] { typeof (object), typeof (int) });
 
@@ -105,7 +109,7 @@ namespace MonoMac.ObjCRuntime {
 			
 			method.SetImplementationFlags (MethodImplAttributes.Runtime | MethodImplAttributes.Managed);
 
-			return type.CreateType ();
+			return type.CreateTypeInfo ().AsType();
 		}
 
 		private bool NeedsCustomMarshaler (Type t) {

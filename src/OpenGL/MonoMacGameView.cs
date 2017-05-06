@@ -296,10 +296,6 @@ namespace MonoMac.OpenGL
 			set { throw new NotSupportedException ();}
 		}
 
-		Icon INativeWindow.Icon {  
-			get { throw new NotSupportedException ();}
-			set { throw new NotSupportedException ();}		
-		}
 
 		Size size;
 
