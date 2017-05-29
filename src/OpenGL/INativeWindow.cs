@@ -38,11 +38,12 @@ namespace MonoMac.OpenGL
     /// </summary>
     public interface INativeWindow : IDisposable
     {
+#if !COREFX
         /// <summary>
         /// Gets or sets the <see cref="System.Drawing.Icon"/> of the window.
         /// </summary>
         Icon Icon { get; set; }
-
+#endif
         /// <summary>
         /// Gets or sets the title of the window.
         /// </summary>

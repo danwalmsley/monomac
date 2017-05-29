@@ -3,3 +3,6 @@ generated_sources
 *.dll
 *.exe
 *.mdb
+bin
+obj
+netstandard.files

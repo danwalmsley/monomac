@@ -310,12 +310,12 @@ namespace MonoMac.OpenGL
 			get { throw new NotSupportedException ();}
 			set { throw new NotSupportedException ();}
 		}
-
+#if !COREFX
 		Icon INativeWindow.Icon {  
 			get { throw new NotSupportedException ();}
 			set { throw new NotSupportedException ();}		
 		}
-
+#endif
 		Size size;
 
 		public Size Size {

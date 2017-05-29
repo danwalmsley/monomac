@@ -46,11 +46,13 @@ namespace MonoMac.ObjCRuntime {
 				
 		static NativeImplementationBuilder () {
 #if COREFX
-			builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run);
+			builder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName(Guid.NewGuid().ToString()), AssemblyBuilderAccess.Run);
+			module = builder.DefineDynamicModule ("Implementations");
+
 #else		
 			builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run, null, null, null,  null, null, true);
-#endif
 			module = builder.DefineDynamicModule ("Implementations", false);
+#endif
 		}
 
 		internal abstract Delegate CreateDelegate ();
@@ -110,8 +112,11 @@ namespace MonoMac.ObjCRuntime {
 					SetupParameter (method, i, argument_types [i - 1]);
 			
 			method.SetImplementationFlags (MethodImplAttributes.Runtime | MethodImplAttributes.Managed);
-
+#if COREFX
+			return type.CreateTypeInfo().AsType();
+#else
 			return type.CreateType ();
+#endif
 		}
 
 		private bool NeedsCustomMarshaler (Type t) {
