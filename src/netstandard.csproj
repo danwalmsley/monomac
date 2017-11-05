@@ -5,7 +5,7 @@
     <Authors>kekekeks</Authors>
     <Copyright>https://github.com/mono/monomac/blob/master/AUTHORS</Copyright>
     <PackageProjectUrl>https://github.com/AvaloniaUI/monomac</PackageProjectUrl>
-    <VersionPrefix>0.0.3</VersionPrefix>
+    <VersionPrefix>0.0.4</VersionPrefix>
     <AssemblyName>MonoMac</AssemblyName>
     <DebugType>portable</DebugType>
     <TargetFrameworks>netstandard2.0;netcoreapp2.0;net461</TargetFrameworks>
